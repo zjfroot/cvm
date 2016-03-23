@@ -17,7 +17,7 @@ From terminal, type:
 
 `cvm.sh [major] [minor] [patch]`
 
-it will download cmake version [major] [minor] [patch] into `.cvm` folder in your home directory, extract it, and then modify the ${PATH}, and then starts a new shell
+it will download cmake version [major] [minor] [patch] into `.cvm` folder in your home directory, extract it, and then modify the ${PATH}, and then start a new shell
 
 ####On Linux:
 It should work the same way as on OSX, but it's not verified
