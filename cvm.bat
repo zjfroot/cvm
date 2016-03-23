@@ -34,12 +34,12 @@ rem echo %unzip_bin_path%
 if not exist "%cvm_home%\%folder_name%" (
 	echo downloading cmake version %version%
 	echo from: %url%
-	echo to: %cvm_home%\%file_name%.zip
+	echo to: %cvm_home%\%file_name%
 	pushd %cvm_home%
 	%curl_bin_path% -O %url% 
-	%unzip_bin_path% x cmake-%version%-win32-x86.zip -aoa
+	%unzip_bin_path% x %file_name% -aoa
+	popd
 )
 echo setting cmake version to %version%
 set PATH=%cvm_home%\%folder_name%\bin;%PATH%
 echo done, please run cmake --version to verify 
-popd
