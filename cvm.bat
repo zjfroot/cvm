@@ -7,6 +7,20 @@ set major=%1
 set minor=%2
 set patch=%3
 set version=%major%.%minor%.%patch%
+rem echo version is %version%
+if "%major%"=="" (
+	echo usage: cvm [major] [minor] [patch], for example: cvm 3 4 1
+	exit /b 2
+)
+if "%minor%"=="" (
+	echo usage: cvm [major] [minor] [patch], for example: cvm 3 4 1
+	exit /b 2
+)
+if "%patch%"=="" (
+	echo usage: cvm [major] [minor] [patch], for example: cvm 3 4 1
+	exit /b 2
+)
+
 set url=https://cmake.org/files/v%major%.%minor%/cmake-%version%-win32-x86.zip
 set folder_name=cmake-%version%-win32-x86
 set file_name=%folder_name%.zip
