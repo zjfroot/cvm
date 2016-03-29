@@ -70,6 +70,6 @@ else
 	cmake_bin=${cvm_home}/${folder_name}/bin/
 fi
 echo "export PATH=${cmake_bin}:\${PATH}" > ${cvm_home}/source_me_${version}
-echo "done, lease run following command to activate CMake ${version}:"
+echo "done, please run following command to activate CMake ${version}:"
 echo 
 echo "	source ${cvm_home}/source_me_${version}"
