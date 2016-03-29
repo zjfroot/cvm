@@ -69,6 +69,7 @@ then
 else
 	cmake_bin=${cvm_home}/${folder_name}/bin/
 fi
-export PATH=${cmake_bin}:${PATH}
-echo done, please run cmake --version to verify, you are now in a subshell
-exec /bin/bash -l
+echo "export PATH=${cmake_bin}:\${PATH}" > ${cvm_home}/source_me_${version}
+echo "done, lease run following command to activate CMake ${version}:"
+echo 
+echo "	source ${cvm_home}/source_me_${version}"
