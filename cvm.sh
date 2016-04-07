@@ -18,6 +18,7 @@ cvm_bin_folder="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 major=$1
 minor=$2
 patch=$3
+doc=$4
 version=${major}.${minor}.${patch}
 #echo "version is ${version}"
 
@@ -60,16 +61,32 @@ then
 	pushd ${cvm_home} > /dev/null
 	curl -O ${url}
 	tar zxf ${file_name}
+	tar_return_code=$?
 	popd > /dev/null
 fi
-echo setting cmake version to ${version}
+
+
+if [ $tar_return_code != 0 ]
+then
+	echo "Error happened when extracting archive, exiting..."
+	exit $?
+fi
+
 if [ "${platform}" = "Darwin" ]
 then
 	cmake_bin=${cvm_home}/${folder_name}/CMake.app/Contents/bin/
+	cmake_doc=${cvm_home}/${folder_name}/CMake.app/Contents/doc/
 else
 	cmake_bin=${cvm_home}/${folder_name}/bin/
 fi
-echo "export PATH=${cmake_bin}:\${PATH}" > ${cvm_home}/source_me_${version}
-echo "done, please run following command to activate CMake ${version}:"
-echo 
-echo "	source ${cvm_home}/source_me_${version}"
+
+if [ "${doc}" = "doc" ]
+then
+	echo "opening cmake doc"
+	open "${cmake_doc}/cmake/html/index.html"
+else
+	echo "export PATH=${cmake_bin}:\${PATH}" > ${cvm_home}/source_me_${version}
+	echo "done, please run following command to activate CMake ${version}:"
+	echo 
+	echo "	source ${cvm_home}/source_me_${version}"
+fi
